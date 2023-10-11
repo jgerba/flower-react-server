@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const Note = require('./note');
 
 const userSchema = new mongoose.Schema(
     {
@@ -32,19 +31,11 @@ const userSchema = new mongoose.Schema(
                     );
             },
         },
-        nightMode: { type: Boolean, default: false },
-        customColors: { type: Boolean, default: false },
-        colorsProfile: [{ element: { type: String }, color: { type: String } }],
+
         tokens: [{ token: { type: String, required: true } }],
     },
     { timestamps: true }
 );
-
-userSchema.virtual('notes', {
-    ref: 'Note',
-    foreignField: 'owner',
-    localField: '_id',
-});
 
 // generating auth token
 userSchema.methods.generateAuthToken = async function () {
@@ -66,7 +57,6 @@ userSchema.methods.toJSON = function () {
 
     delete userObject.password;
     delete userObject.tokens;
-    userObject.colorsProfile.forEach(item => delete item._id);
 
     return userObject;
 };
@@ -92,12 +82,6 @@ userSchema.pre('save', async function (next) {
     if (user.isModified('password'))
         user.password = await bcrypt.hash(user.password, 8);
 
-    next();
-});
-
-// delete users notes before deleting user
-userSchema.pre('remove', async function (next) {
-    await Note.deleteMany({ owner: this._id });
     next();
 });
 
