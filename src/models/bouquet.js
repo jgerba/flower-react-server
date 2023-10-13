@@ -6,7 +6,7 @@ const bouquetSchema = new mongoose.Schema(
         price: { type: Number },
         description: { type: String },
         src: { type: String },
-        flags: [{ flag: { type: String }, check: { type: Boolean } }],
+        flags: [String],
         new: { type: Boolean },
         sale: { type: Boolean },
     },
