@@ -3,39 +3,27 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema(
-    {
-        name: {
-            type: String,
-            trim: true,
-            maxlength: 15,
-            required: [true, 'Name field is empty'],
-        },
-        email: {
-            type: String,
-            trim: true,
-            lowercase: true,
-            unique: true,
-            validate(value) {
-                if (!validator.isEmail(value))
-                    throw new Error('Email is invalid');
-            },
-        },
-        password: {
-            type: String,
-            trim: true,
-            validate(value) {
-                if (!validator.isStrongPassword(value))
-                    throw new Error(
-                        'Password must contain: minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1'
-                    );
-            },
-        },
-
-        tokens: [{ token: { type: String, required: true } }],
+const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        trim: true,
+        maxlength: 15,
+        required: [true, 'Name field is empty'],
     },
-    { timestamps: true }
-);
+
+    password: {
+        type: String,
+        trim: true,
+        validate(value) {
+            if (!validator.isStrongPassword(value))
+                throw new Error(
+                    'Password must contain: minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1'
+                );
+        },
+    },
+
+    tokens: [{ token: { type: String, required: true } }],
+});
 
 // generating auth token
 userSchema.methods.generateAuthToken = async function () {

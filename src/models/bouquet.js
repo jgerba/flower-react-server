@@ -9,6 +9,7 @@ const bouquetSchema = new mongoose.Schema(
         flags: [String],
         new: { type: Boolean },
         sale: { type: Boolean },
+        inCart: { type: Number },
     },
     { timestamps: true }
 );
