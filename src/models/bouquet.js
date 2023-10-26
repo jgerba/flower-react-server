@@ -4,6 +4,7 @@ const bouquetSchema = new mongoose.Schema(
     {
         title: { type: String },
         price: { type: Number },
+        oldPrice: { type: Number },
         description: { type: String },
         src: { type: String },
         flags: [String],
