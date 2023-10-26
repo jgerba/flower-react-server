@@ -15,7 +15,7 @@ router.get('/bouquets', async (req, res) => {
     }
 });
 
-router.post('/bouquet', async (req, res) => {
+router.post('/bouquet', auth, async (req, res) => {
     let bouquet = new Bouquet({ ...req.body });
 
     try {
