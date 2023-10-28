@@ -72,7 +72,7 @@ router.post('/logout_all', auth, async (req, res) => {
 
 router.delete('/user_profile', auth, async (req, res) => {
     try {
-        await req.user.remove();
+        await req.user.deleteOne();
         res.send();
     } catch (error) {
         res.send(error.message);

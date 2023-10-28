@@ -50,11 +50,9 @@ router.patch('/bouquet/:id', auth, async (req, res) => {
 router.delete('/bouquet/:id', auth, async (req, res) => {
     try {
         const bouquet = await Bouquet.findById(req.params.id);
-
         if (!bouquet) return res.status(404).send();
 
-        await bouquet.remove();
-
+        await bouquet.deleteOne();
         res.send();
     } catch (error) {
         res.status(400).send(error.message);
