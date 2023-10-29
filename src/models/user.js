@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
-        maxlength: 15,
+        maxlength: 30,
         required: [true, 'Name field is empty'],
     },
 
