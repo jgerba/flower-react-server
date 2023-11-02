@@ -30,7 +30,7 @@ const orderSchema = new mongoose.Schema(
                 building: { type: String },
                 house: { type: String },
                 flat: { type: String },
-                deliverTime: { type: Number },
+                deliverTime: { type: String },
             },
         ],
         order: [Object],
