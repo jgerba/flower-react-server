@@ -4,6 +4,7 @@ const bouquetSchema = new mongoose.Schema(
     {
         title: {
             type: String,
+            lowercase: true,
             trim: true,
             maxlength: 25,
             required: [true, 'Title field is empty'],
@@ -16,7 +17,12 @@ const bouquetSchema = new mongoose.Schema(
             required: [true, 'Price field is empty'],
         },
         oldPrice: { type: Number, min: 1, max: 10000, maxlength: 5 },
-        description: { type: String, trim: true, maxlength: 300 },
+        description: {
+            type: String,
+            lowercase: true,
+            trim: true,
+            maxlength: 300,
+        },
         src: {
             type: String,
             trim: true,

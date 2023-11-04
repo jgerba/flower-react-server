@@ -4,6 +4,7 @@ const orderSchema = new mongoose.Schema(
     {
         name: {
             type: String,
+            lowercase: true,
             trim: true,
             maxlength: 30,
             required: [true, 'Name field is empty'],
@@ -16,25 +17,30 @@ const orderSchema = new mongoose.Schema(
         email: {
             type: String,
             trim: true,
+            lowercase: true,
             maxlength: 30,
-            required: [true, 'Email field is empty'],
+        },
+        recieverName: {
+            type: String,
+            lowercase: true,
+            trim: true,
+            maxlength: 30,
         },
         recieverPhone: { type: Number, maxlength: 12 },
-        recieverName: { type: String, trim: true, maxlength: 12 },
-        comment: { type: String, trim: true, maxlength: 300 },
+        comment: { type: String, lowercase: true, trim: true, maxlength: 300 },
         delivery: { type: Boolean },
         address: [
             {
-                city: { type: String },
-                street: { type: String },
-                building: { type: String },
-                house: { type: String },
-                flat: { type: String },
+                city: { type: String, lowercase: true, trim: true },
+                street: { type: String, lowercase: true, trim: true },
+                building: { type: String, lowercase: true, trim: true },
+                house: { type: Number },
+                flat: { type: Number },
                 deliverTime: { type: String },
             },
         ],
         order: [Object],
-        promo: { type: String, trim: true, maxlength: 15 },
+        promo: { type: String, lowercase: true, trim: true, maxlength: 15 },
         totalPrice: { type: Number },
     },
     { timestamps: true }
