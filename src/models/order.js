@@ -29,16 +29,15 @@ const orderSchema = new mongoose.Schema(
         recieverPhone: { type: Number, maxlength: 12 },
         comment: { type: String, lowercase: true, trim: true, maxlength: 300 },
         delivery: { type: Boolean },
-        address: [
-            {
-                city: { type: String, lowercase: true, trim: true },
-                street: { type: String, lowercase: true, trim: true },
-                building: { type: String, lowercase: true, trim: true },
-                house: { type: Number },
-                flat: { type: Number },
-                deliverTime: { type: String },
-            },
-        ],
+        address: {
+            city: { type: String, lowercase: true, trim: true },
+            street: { type: String, lowercase: true, trim: true },
+            building: { type: String, lowercase: true, trim: true },
+            house: { type: Number },
+            flat: { type: Number },
+            deliverTime: { type: String },
+        },
+
         order: [Object],
         promo: { type: String, lowercase: true, trim: true, maxlength: 15 },
         totalPrice: { type: Number },
