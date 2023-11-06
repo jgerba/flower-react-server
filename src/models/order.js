@@ -41,7 +41,7 @@ const orderSchema = new mongoose.Schema(
         order: [Object],
         promo: { type: String, lowercase: true, trim: true, maxlength: 15 },
         totalPrice: { type: Number },
-        done: { type: Boolean, default: false },
+        isDone: { type: Boolean, default: false },
     },
     { timestamps: true }
 );
