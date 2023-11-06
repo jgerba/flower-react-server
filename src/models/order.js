@@ -28,7 +28,7 @@ const orderSchema = new mongoose.Schema(
         },
         recieverPhone: { type: Number, maxlength: 12 },
         comment: { type: String, lowercase: true, trim: true, maxlength: 300 },
-        delivery: { type: Boolean },
+        delivery: { type: Boolean, default: false },
         address: {
             city: { type: String, lowercase: true, trim: true },
             street: { type: String, lowercase: true, trim: true },
@@ -41,6 +41,7 @@ const orderSchema = new mongoose.Schema(
         order: [Object],
         promo: { type: String, lowercase: true, trim: true, maxlength: 15 },
         totalPrice: { type: Number },
+        done: { type: Boolean, default: false },
     },
     { timestamps: true }
 );

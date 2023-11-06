@@ -29,8 +29,8 @@ const bouquetSchema = new mongoose.Schema(
             required: [true, 'Src field is empty'],
         },
         flags: [String],
-        new: { type: Boolean },
-        sale: { type: Boolean },
+        new: { type: Boolean, default: false },
+        sale: { type: Boolean, default: false },
         inCart: { type: Number, default: 1 },
     },
     { timestamps: true }
