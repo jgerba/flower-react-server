@@ -16,6 +16,8 @@ const feedbackSchema = new mongoose.Schema(
         },
         comment: { type: String, lowercase: true, trim: true, maxlength: 300 },
 
+        corporate: { type: Boolean, default: false },
+
         organization: {
             type: String,
             lowercase: true,
@@ -64,6 +66,8 @@ const feedbackSchema = new mongoose.Schema(
             type: Number,
             min: 1,
         },
+
+        isDone: { type: Boolean, default: false },
     },
     { timestamps: true }
 );
