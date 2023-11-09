@@ -11,7 +11,7 @@ const feedbackSchema = new mongoose.Schema(
         },
         phone: {
             type: String,
-            maxlength: 12,
+            maxlength: 15,
             required: [true, 'Phone field is empty'],
         },
         comment: { type: String, lowercase: true, trim: true, maxlength: 300 },
