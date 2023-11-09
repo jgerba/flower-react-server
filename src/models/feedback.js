@@ -10,7 +10,7 @@ const feedbackSchema = new mongoose.Schema(
             required: [true, 'Name field is empty'],
         },
         phone: {
-            type: Number,
+            type: String,
             maxlength: 12,
             required: [true, 'Phone field is empty'],
         },
@@ -33,8 +33,8 @@ const feedbackSchema = new mongoose.Schema(
 
         price: {
             type: Number,
-            min: 1,
-            maxlength: 10,
+            min: 0,
+            max: 10000,
         },
 
         email: {
@@ -46,25 +46,25 @@ const feedbackSchema = new mongoose.Schema(
 
         unp: {
             type: Number,
-            min: 9,
             maxlength: 9,
+            default: 0,
         },
 
         account: {
             type: Number,
-            min: 28,
             maxlength: 28,
+            default: 0,
         },
 
         bank: {
             type: Number,
-            min: 9,
             maxlength: 9,
+            default: 0,
         },
 
         entries: {
             type: Number,
-            min: 1,
+            default: 1,
         },
 
         isDone: { type: Boolean, default: false },
