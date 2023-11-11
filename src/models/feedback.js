@@ -32,9 +32,9 @@ const feedbackSchema = new mongoose.Schema(
         },
 
         price: {
-            type: Number,
-            min: 0,
-            max: 10000,
+            type: String,
+            lowercase: true,
+            trim: true,
             default: 0,
         },
 
