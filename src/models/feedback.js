@@ -35,6 +35,7 @@ const feedbackSchema = new mongoose.Schema(
             type: Number,
             min: 0,
             max: 10000,
+            default: 0,
         },
 
         email: {
