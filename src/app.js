@@ -20,5 +20,5 @@ app.use(feedbackRouter);
 mongoose.connect(process.env.MONGO_URL);
 
 app.listen(port, () => {
-    console.log(`Server is up on port ${port}`);
+  console.log(`Server is up on port ${port}`);
 });
